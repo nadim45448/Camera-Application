@@ -104,6 +104,7 @@ class Window(QWidget):
         q_frame=QImage(frame.data, width, height, stop, QImage.Format_RGB888)
         self.image_label.setPixmap(QPixmap.fromImage(q_frame))
         pass
+   
     def save_img(self):
         """ save img from camera """
         print("saving image...")
@@ -111,6 +112,7 @@ class Window(QWidget):
         cv2.imwrite(f"{self.dt}.jpg", self.frame)
 
         pass
+    
     def record(self):
         """ record video """
         print(self.record_flag)
@@ -123,8 +125,6 @@ class Window(QWidget):
             self.get_time()
             self.footage=cv2.VideoWriter(f'{self.dt}.avi', self.fourcc, 20.0,(self.img_width,self.img_height))
         
-        
-
     def get_time(self):
         now=datetime.datetime.now()
         self.dt=now.strftime("%m-%d-%y, %H-%M-%S")
